@@ -1,15 +1,19 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { productContext } from "../context/ProductContext";
 
-const TodoItem = ({ title }) => {
+const TodoItem = ({ todoTitle, id }) => {
+  const { deleteTodo } = useContext(productContext);
   return (
     <div>
       <li className="todo">
         <label>
           <input type="checkbox" />
-          <span>{title}</span>
+          <span>{todoTitle}</span>
           <div>
-            <Button variant="outlined">Delete</Button>
+            <Button onClick={() => deleteTodo(id)} variant="outlined">
+              Delete
+            </Button>
             <Button variant="contained">Edit</Button>
           </div>
         </label>

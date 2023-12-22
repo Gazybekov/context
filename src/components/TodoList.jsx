@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { productContext } from "../context/ProductContext";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const { todos } = useContext(productContext);
+  const { todos, getTodos } = useContext(productContext);
+  useEffect(() => {
+    getTodos();
+  }, []);
   return (
     <div>
       <ul>
