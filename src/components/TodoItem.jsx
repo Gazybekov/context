@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
 import { productContext } from "../context/ProductContext";
+import { Link } from "react-router-dom";
 
 const TodoItem = ({ todoTitle, id }) => {
   const { deleteTodo } = useContext(productContext);
@@ -14,7 +15,12 @@ const TodoItem = ({ todoTitle, id }) => {
             <Button onClick={() => deleteTodo(id)} variant="outlined">
               Delete
             </Button>
-            <Button variant="contained">Edit</Button>
+            <Link to={`/edit/${id}`}>
+              <Button variant="contained">Edit</Button>
+            </Link>
+            <Link to={`/details/${id}`}>
+              <Button variant="outlined">Details</Button>
+            </Link>
           </div>
         </label>
       </li>
